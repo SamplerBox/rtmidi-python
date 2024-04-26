@@ -49,7 +49,7 @@ cdef class MidiBase:
 
         self.baseptr().openPort(port_number)
 
-    def open_virtual_port(self, port_name="RtMidi"):
+    def open_virtual_port(self, port_name=b"RtMidi"):
         self.baseptr().openVirtualPort(string(<char*>port_name))
 
     property ports:
@@ -60,7 +60,7 @@ cdef class MidiBase:
         self.baseptr().closePort()
 
 
-cdef void midi_in_callback(double time_stamp, vector[unsigned char]* message_vector, void* py_callback) with gil:
+cdef void midi_in_callback(double time_stamp, vector[unsigned char]* message_vector, void* py_callback) noexcept with gil:
     (<object>py_callback)(dereference(message_vector), time_stamp)
 
 
@@ -68,7 +68,7 @@ cdef class MidiIn(MidiBase):
     cdef RtMidiIn* thisptr
     cdef object py_callback
 
-    def __cinit__(self, client_name="RtMidi Input Client", queue_size_limit=100):
+    def __cinit__(self, client_name=b"RtMidi Input Client", queue_size_limit=100):
         self.thisptr = new RtMidiIn(UNSPECIFIED, string(<char*>client_name), queue_size_limit)
         self.py_callback = None
 
@@ -107,7 +107,7 @@ cdef class MidiIn(MidiBase):
 cdef class MidiOut(MidiBase):
     cdef RtMidiOut* thisptr
 
-    def __cinit__(self, client_name="RtMidi Output Client"):
+    def __cinit__(self, client_name=b"RtMidi Output Client"):
         self.thisptr = new RtMidiOut(UNSPECIFIED, string(<char*>client_name))
 
     def __dealloc__(self):
