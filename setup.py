@@ -1,13 +1,8 @@
 import distutils
 import sys
 
-if '--from-cython' in sys.argv:
-    from Cython.Distutils import build_ext
-    sys.argv.remove('--from-cython')
-    module_source = 'rtmidi_python.pyx'
-else:
-    from distutils.command.build_ext import build_ext
-    module_source = 'rtmidi_python.cpp'
+from Cython.Distutils import build_ext
+module_source = 'rtmidi_python.pyx'
 
 extension_args = {}
 
@@ -43,7 +38,7 @@ rtmidi_module = distutils.extension.Extension(
 
 distutils.core.setup(
     name='rtmidi-python',
-    version='0.2.2',
+    version='0.2.3',
     description='Python wrapper for RtMidi',
     long_description=open('README.rst').read(),
     author='Guido Lorenz',
