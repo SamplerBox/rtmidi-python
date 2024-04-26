@@ -3,7 +3,7 @@ rtmidi-python
 
 *Edit (2024): this is a fork from https://github.com/superquadratic/rtmidi-python/ to add Cython3 and Python3.9+ support. The following README has been updated to reflect these changes.*
 
-Python wrapper for `RtMidi`_, the lightweight, cross-platform MIDI I/O
+Python3 wrapper for `RtMidi`_, the lightweight, cross-platform MIDI I/O
 library. For Linux, Mac OS X and Windows.
 
 Installation
