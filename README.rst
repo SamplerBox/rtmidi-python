@@ -1,6 +1,8 @@
 rtmidi-python
 =============
 
+*Edit (2024): this is a fork from https://github.com/superquadratic/rtmidi-python/ to add Cython3 and Python3.9+ support. The following readme has been updated to reflect these changes.*
+
 Python wrapper for `RtMidi`_, the lightweight, cross-platform MIDI I/O
 library. For Linux, Mac OS X and Windows.
 
@@ -11,16 +13,12 @@ On Windows, the preferred way is to use one of the precompiled binaries
 available from `PyPI`_. On Linux and Mac OS X, the easiest way to install
 *rtmidi-python* is using pip::
 
-    pip install rtmidi-python
+    pip3 install cython
+    pip3 install git+https://github.com/SamplerBox/rtmidi-python.git
 
-Alternatively, you can build the module from source as follows::
+Alternatively, you can build the module from source (Cython required) as follows::
 
     python setup.py install
-
-If you want to build from the `Cython`_ source, make sure that you have a
-recent version of Cython (>= 0.17), and run::
-
-    python setup.py install --from-cython
 
 Usage Examples
 --------------
@@ -37,7 +35,7 @@ Print all output ports
 
     midi_out = rtmidi.MidiOut()
     for port_name in midi_out.ports:
-        print port_name
+        print(port_name)
 
 Send messages
 ~~~~~~~~~~~~~
@@ -65,7 +63,7 @@ Get incoming messages by polling
     while True:
         message, delta_time = midi_in.get_message()
         if message:
-            print message, delta_time
+            print(message, delta_time)
 
 Note that the signature of ``get_message()`` differs from the original
 `RtMidi`_ API: It returns a tuple instead of using a return parameter.
@@ -78,7 +76,7 @@ Get incoming messages using a callback
     import rtmidi_python as rtmidi
 
     def callback(message, time_stamp):
-        print message, time_stamp
+        print(message, time_stamp)
 
     midi_in = rtmidi.MidiIn()
     midi_in.callback = callback
