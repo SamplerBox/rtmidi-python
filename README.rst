@@ -1,7 +1,7 @@
 rtmidi-python
 =============
 
-*Edit (2024): this is a fork from https://github.com/superquadratic/rtmidi-python/ to add Cython3 and Python3.9+ support. The following readme has been updated to reflect these changes.*
+*Edit (2024): this is a fork from https://github.com/superquadratic/rtmidi-python/ to add Cython3 and Python3.9+ support. The following README has been updated to reflect these changes.*
 
 Python wrapper for `RtMidi`_, the lightweight, cross-platform MIDI I/O
 library. For Linux, Mac OS X and Windows.
@@ -9,16 +9,18 @@ library. For Linux, Mac OS X and Windows.
 Installation
 ------------
 
-On Windows, the preferred way is to use one of the precompiled binaries
-available from `PyPI`_. On Linux and Mac OS X, the easiest way to install
-*rtmidi-python* is using pip::
+On Linux and Mac OS X, the easiest way to install *rtmidi-python* is using pip::
 
     pip3 install cython
     pip3 install git+https://github.com/SamplerBox/rtmidi-python.git
 
 Alternatively, you can build the module from source (Cython required) as follows::
 
+    git clone https://github.com/SamplerBox/rtmidi-python.git
+    cd rtmidi-python
     python setup.py install
+
+On Windows, the preferred way is to use the latter solution.
 
 Usage Examples
 --------------
@@ -97,5 +99,4 @@ It uses `RtMidi`_, licensed under a modified MIT License, see
 RtMidi/RtMidi.h.
 
 .. _RtMidi: http://www.music.mcgill.ca/~gary/rtmidi/
-.. _PyPI: https://pypi.python.org/pypi/rtmidi-python#downloads
 .. _Cython: http://www.cython.org
